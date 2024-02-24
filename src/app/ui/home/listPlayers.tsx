@@ -17,11 +17,11 @@ export default function ListPlayers({ data }: any) {
             style={{ backgroundImage: teamBackgroundColors[player.team] }}
           >
             <a
-              href={
+              href={`/player/${
                 player.firstname.toLowerCase() +
                 "-" +
                 player.lastname.toLowerCase()
-              }
+              }`}
             >
               <Image
                 src={player.image}
