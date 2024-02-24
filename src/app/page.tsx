@@ -11,6 +11,7 @@ export default function Home() {
   const [players, setPlayers] = useState<any>([]);
   const [selectedTeam, setSelectedTeam] = useState("default");
   const [searchResults, setSearchResults] = useState([]);
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
   useEffect(() => {
     fetchPlayers().then((players) => {
@@ -19,6 +20,12 @@ export default function Home() {
   }, []);
   const searchPlayer = (playerName: string) => {
     const searchTerm = playerName.toLowerCase().trim();
+    if (searchTerm === "") {
+      setSearchResults([]);
+      setSearchPerformed(false);
+      return;
+    }
+    setSearchPerformed(true);
     if (!searchTerm) {
       setSearchResults([]);
       return;
@@ -41,7 +48,7 @@ export default function Home() {
         selectedTeam={setSelectedTeam}
         onSearch={searchPlayer}
       />
-      <ListPlayers data={searchResults} />
+      {searchPerformed && <ListPlayers data={searchResults} />}
     </main>
   );
 }
