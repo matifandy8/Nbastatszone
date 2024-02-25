@@ -1,0 +1,21 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loader {
+  width: 140px;
+  height: 20px;
+  -webkit-mask: linear-gradient(90deg, #14154659 70%, #15164e00 0) 0/20%;
+  background: linear-gradient(#c1c2f5e3 0 0) 0/0% no-repeat #858cce3a;
+  animation: l4 2s infinite steps(6);
+  margin: 10px 0px;
+}
+@keyframes l4 {
+  100% {
+    background-size: 120%;
+  }
+}

@@ -6,36 +6,53 @@ import InputSearchPlayer from "./ui/inputSearchPlayer/inputSearchPlayer";
 import { teamBackgroundColors } from "./lib/themes";
 import { fetchPlayers } from "./lib/fetch";
 import ListPlayers from "./ui/home/listPlayers";
+import Loading from "./ui/loading/loading";
 
 export default function Home() {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [players, setPlayers] = useState<any>([]);
   const [selectedTeam, setSelectedTeam] = useState("default");
   const [searchResults, setSearchResults] = useState([]);
   const [searchPerformed, setSearchPerformed] = useState(false);
 
   useEffect(() => {
-    fetchPlayers().then((players) => {
-      setPlayers(players);
-    });
+    fetchPlayers()
+      .then((data) => {
+        setPlayers(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching players:", error);
+        setError("Error to found players. Please try again later.");
+      });
   }, []);
   const searchPlayer = (playerName: string) => {
+    let filteredPlayers;
+
+    setLoading(true);
     const searchTerm = playerName.toLowerCase().trim();
     if (searchTerm === "") {
       setSearchResults([]);
       setSearchPerformed(false);
+      setLoading(false);
       return;
     }
     setSearchPerformed(true);
     if (!searchTerm) {
       setSearchResults([]);
+      setLoading(false);
       return;
     }
-    const filteredPlayers = players.filter((player: any) => {
-      const fullName = `${player.firstname} ${player.lastname}`.toLowerCase();
-      return fullName.includes(searchTerm);
-    });
-
-    setSearchResults(filteredPlayers);
+    setTimeout(() => {
+      filteredPlayers = players.filter((player: any) => {
+        return (
+          player.firstname.toLowerCase().includes(searchTerm) ||
+          player.lastname.toLowerCase().includes(searchTerm)
+        );
+      });
+      setLoading(false);
+      setSearchResults(filteredPlayers);
+    }, 500);
   };
 
   return (
@@ -48,7 +65,14 @@ export default function Home() {
         selectedTeam={setSelectedTeam}
         onSearch={searchPlayer}
       />
-      {searchPerformed && <ListPlayers data={searchResults} />}
+      {error && <p>{error}</p>}
+      {loading ? (
+        <Loading />
+      ) : searchPerformed && searchResults.length === 0 ? (
+        <p>No players found</p>
+      ) : (
+        searchPerformed && <ListPlayers data={searchResults} />
+      )}
     </main>
   );
 }
