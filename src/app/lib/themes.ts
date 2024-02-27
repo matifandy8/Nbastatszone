@@ -6,7 +6,7 @@ export const teamBackgroundColors: { [key: string]: string } = {
   Celtics: "radial-gradient(circle, #003366, rgba(0, 51, 102, 0) 65%)",
   Warriors: "radial-gradient(circle, #1d428a, rgba(29, 66, 138, 0) 65%)",
   Bulls: "radial-gradient(circle, #ff0000, rgba(255, 0, 0, 0) 65%)",
-  Spurs: "radial-gradient(circle, #000000, rgba(0, 0, 0, 0) 65%)",
+  Spurs: "radial-gradient(circle, #000000, rgb(255 255 255 / 7%) 65%)",
   Rockets: "radial-gradient(circle, #cc0000, rgba(204, 0, 0, 0) 65%)",
   Bucks: "radial-gradient(circle, #00471b, rgba(0, 71, 27, 0) 65%)",
   Clippers: "radial-gradient(circle, #c8102e, rgba(200, 16, 46, 0) 65%)",

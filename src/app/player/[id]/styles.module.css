@@ -1,0 +1,43 @@
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 40px;
+  margin: 20px;
+}
+.image {
+  filter: drop-shadow(0 0 0.75rem #f8f8f849);
+}
+.nameplayer {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid;
+  margin-bottom: 40px;
+}
+.firstname {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: left;
+  color: #c1c1c17d;
+}
+
+.infoText {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  padding: 4px;
+  width: fit-content;
+  display: flex;
+  gap: 20px;
+}
+.span {
+  font-size: 1rem;
+  color: #929292;
+}

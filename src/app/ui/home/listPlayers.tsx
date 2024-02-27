@@ -2,11 +2,8 @@ import Image from "next/image";
 import styles from "./listPlayers.module.css";
 import { PlayerInfo } from "@/app/lib/types";
 import { teamBackgroundColors } from "@/app/lib/themes";
-import { useState } from "react";
 
 export default function ListPlayers({ data }: any) {
-  const [selectedTeam, setSelectedTeam] = useState("default");
-
   return (
     <section className={styles.listplayers}>
       {data.length > 0 ? (
