@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
 import "./globals.css";
 import Navbar from "./ui/layout/navbar/navbar";
 import Footer from "./ui/layout/footer/footer";
-
-const inter = Nunito({ subsets: ["latin"] });
+import '@fontsource/fira-sans';
 
 export const metadata: Metadata = {
   title: "Player Stats",
@@ -18,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Navbar />
         {children}
         <Footer />
