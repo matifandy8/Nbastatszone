@@ -31,6 +31,10 @@
     .links {
       .link {
         color: rgba(255, 255, 255, 0.39);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
       }
 
       .link:hover {

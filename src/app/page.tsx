@@ -60,7 +60,7 @@ export default function Home() {
       className={styles.main}
       style={{ backgroundImage: teamBackgroundColors[selectedTeam] }}
     >
-      <h1 className={styles.title}>Search your player here</h1>
+      <h1 className={styles.title}>Search your NBA player here</h1>
       <InputSearchPlayer
         selectedTeam={setSelectedTeam}
         onSearch={searchPlayer}
