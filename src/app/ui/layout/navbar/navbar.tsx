@@ -2,7 +2,7 @@ import styles from "./navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import github from "../../../../../public/github-icon.svg";
-import logo from "../../../../../public/logo.svg";
+import logo from "../../../../../public/logo.png";
 
 export default function Navbar() {
   return (
@@ -10,7 +10,8 @@ export default function Navbar() {
       <div className={styles.container}>
         <h1 className={styles.logo}>
           <Link href="/">
-            <Image src={logo} alt="Logo" width={40} height={40} />
+            <Image src={logo} alt="Logo" width={20} height={20} />
+            <span>Nbastatszone</span>
           </Link>
         </h1>
 

@@ -26,6 +26,7 @@
     border: 0 solid #35373e;
     border-top: 0.1rem solid rgba(255, 255, 255, 0.15);
     border-left: 0.1rem solid rgba(255, 255, 255, 0.15);
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.15);
     border-radius: 1rem;
 
     .links {

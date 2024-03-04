@@ -1,4 +1,6 @@
 import styles from "./footer.module.css";
+import Image from "next/image";
+import logo from "../../../../../public/logo.png";
 
 export default function Footer() {
   return (
@@ -13,7 +15,8 @@ export default function Footer() {
             rel="noopener noreferrer"
             className={styles.link}
           >
-            StatsPlayer
+            <Image src={logo} alt="Logo" width={20} height={20} />
+            <span>Nbastatszone</span>
           </a>
         </p>
         <p>

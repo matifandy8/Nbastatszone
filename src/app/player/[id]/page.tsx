@@ -2,6 +2,7 @@ import { teamBackgroundColors } from "@/app/lib/themes";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 export default async function Page({ params }: any) {
   const response = await fetch(
@@ -109,7 +110,9 @@ export default async function Page({ params }: any) {
         </table>
       </div>
       <div className={styles.goback}>
-        <Link href="/">&larr; Go back </Link>
+        <Link href="/">
+          <IoMdArrowRoundBack /> Go back
+        </Link>
       </div>
     </div>
   );
