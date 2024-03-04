@@ -8,3 +8,40 @@
   max-width: var(--max-width);
   margin: 0 auto;
 }
+.news {
+  margin-top: 200px;
+  text-align: center;
+}
+.newsContainer {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 200px;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: linear-gradient(
+    170deg,
+    rgb(25 70 147 / 20%),
+    rgb(74 111 171 / 0%) 99%,
+    #0b0a0a3b
+  );
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px outset rgba(255, 255, 255, 0.151);
+  box-shadow: 0px 1px 24px -1px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+}
+
+.item:first-child {
+  grid-column: span 2;
+}

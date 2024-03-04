@@ -2,13 +2,16 @@ import styles from "./navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import github from "../../../../../public/github-icon.svg";
+import logo from "../../../../../public/logo.svg";
 
 export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
         <h1 className={styles.logo}>
-          <Link href="/">Player Stats</Link>
+          <Link href="/">
+            <Image src={logo} alt="Logo" width={40} height={40} />
+          </Link>
         </h1>
 
         <div className={styles.links}>

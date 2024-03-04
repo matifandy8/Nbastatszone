@@ -10,13 +10,13 @@
     align-items: center;
     padding: 0px;
     z-index: 1;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(5px);
     box-shadow: 1px 10px 10px rgba(0, 20, 50, 0.1);
     background-image: linear-gradient(
       170deg,
-      rgba(193, 216, 255, 0.1),
-      rgba(74, 111, 171, 0.15) 99%,
-      #0b0a0a
+      rgb(25 70 147 / 20%),
+      rgb(74 111 171 / 0%) 99%,
+      #0b0a0a3b
     );
     height: 4rem;
     width: 100%;
