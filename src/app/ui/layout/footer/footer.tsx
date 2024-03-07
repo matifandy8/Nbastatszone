@@ -10,19 +10,19 @@ export default function Footer() {
         <p>
           Powered by{" "}
           <a
-            href="https://github.com/matifandy8/StatsPlayer"
+            href="https://github.com/matifandy8/Nbastatszone"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
           >
             <Image src={logo} alt="Logo" width={20} height={20} />
-            <span>Nbastatszone</span>
+            <span className={styles.logoText}>Nbastatszone</span>
           </a>
         </p>
         <p>
           Developed by{" "}
           <a
-            href="https://github.com/matifandy8"
+            href="https://matias-fandino.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}

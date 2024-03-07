@@ -37,7 +37,9 @@
       transition: 0.25s;
     }
   }
-
+  .logoText {
+    padding: 10px;
+  }
   @media screen and (max-width: 768px) {
     .container {
       display: flex;

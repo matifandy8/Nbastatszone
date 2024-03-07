@@ -6,7 +6,7 @@ import InputSearchPlayer from "./ui/inputSearchPlayer/inputSearchPlayer";
 import { fetchPlayers } from "./lib/fetch";
 import ListPlayers from "./ui/home/listPlayers";
 import Loading from "./ui/loading/loading";
-import Image from "next/image";
+import News from "./ui/news/news";
 
 export default function Home() {
   const [error, setError] = useState("");
@@ -71,51 +71,7 @@ export default function Home() {
         searchPerformed && <ListPlayers data={searchResults} />
       )}
 
-      <section className={styles.news}>
-        <h1>News</h1>
-        <div className={styles.newsContainer}>
-          {" "}
-          <div className={styles.item}>
-            <Image
-              className={styles.image}
-              src="/images/logos-nba/logo-lakers.svg"
-              alt="Lakers"
-              width={190}
-              height={190}
-            />
-            <h2>
-              Lakers' LeBron James becomes first player to hit 40,000 career
-              points
-            </h2>
-          </div>
-          <div className={styles.item}>
-            <Image
-              className={styles.image}
-              src="/images/logos-nba/logo-lakers.svg"
-              alt="Lakers"
-              width={190}
-              height={190}
-            />
-            <h2>
-              Lakers' LeBron James becomes first player to hit 40,000 career
-              points
-            </h2>
-          </div>
-          <div className={styles.item}>
-            <Image
-              className={styles.image}
-              src="/images/logos-nba/logo-lakers.svg"
-              alt="Lakers"
-              width={190}
-              height={190}
-            />
-            <h2>
-              Lakers' LeBron James becomes first player to hit 40,000 career
-              points
-            </h2>
-          </div>
-        </div>
-      </section>
+      <News />
     </main>
   );
 }

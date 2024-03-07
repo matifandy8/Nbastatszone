@@ -11,13 +11,13 @@ export default function Navbar() {
         <h1 className={styles.logo}>
           <Link href="/">
             <Image src={logo} alt="Logo" width={20} height={20} />
-            <span>Nbastatszone</span>
+            <span className={styles.logoText}>Nbastatszone</span>
           </Link>
         </h1>
 
         <div className={styles.links}>
           <a
-            href="https://github.com/matifandy8/StatsPlayer"
+            href="https://github.com/matifandy8/Nbastatszone"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
