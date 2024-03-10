@@ -21,7 +21,6 @@ export default function News() {
 
     fetchData();
   }, []);
-  console.log(dataNews);
 
   return (
     <section className={styles.news}>
