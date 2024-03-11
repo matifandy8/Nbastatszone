@@ -6,7 +6,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 
 export default async function Page({ params }: any) {
   const response = await fetch(
-    `http://localhost:3000/api/players?fullname=${params.id}`
+    `https://nbastatszone-sntx.vercel.app/api/players?fullname=${params.id}`
   );
   const player = await response.json();
 
@@ -38,7 +38,13 @@ export default async function Page({ params }: any) {
           />
         )}
         <div className={styles.playerPresentation}>
-          <Image className={styles.image} src={player[0].image} alt={params.id} />
+          <Image
+            className={styles.image}
+            src={player[0].image}
+            alt={params.id}
+            width={260}
+            height={190}
+          />
           <h1 className={styles.nameplayer}>
             <span className={styles.firstname}>{player[0].firstname}</span>{" "}
             {player[0].lastname}
