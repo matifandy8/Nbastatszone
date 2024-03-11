@@ -38,7 +38,7 @@ export default async function Page({ params }: any) {
           />
         )}
         <div className={styles.playerPresentation}>
-          <img className={styles.image} src={player[0].image} alt={params.id} />
+          <Image className={styles.image} src={player[0].image} alt={params.id} />
           <h1 className={styles.nameplayer}>
             <span className={styles.firstname}>{player[0].firstname}</span>{" "}
             {player[0].lastname}

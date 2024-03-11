@@ -13,9 +13,9 @@ export default function News({ urlImage, title }: NewsCardProps) {
         className={styles.image}
         src={urlImage}
         alt={title}
-        width={140}
-        height={140}
-        style={{ objectFit: "cover" }}
+        width={160}
+        height={90}
+        style={{ objectFit: "scale-down" }}
         quality={100}
       />
       <h2>{title}</h2>
