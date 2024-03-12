@@ -9,37 +9,44 @@ interface NewsData {
   }[];
 }
 export default function News() {
-  const [dataNews, setDataNews] = useState({ news: [] });
+  const [dataNews, setDataNews] = useState<NewsData>({ news: [] });
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
-      const cachedData = localStorage.getItem("newsData");
-      const cachedTimestamp = localStorage.getItem("newsTimestamp");
-      const currentTime = new Date().getTime();
-      const halfDay = 12 * 60 * 60 * 1000;
+      try {
+        const cachedData = localStorage.getItem("newsData");
+        const cachedTimestamp = localStorage.getItem("newsTimestamp");
+        const currentTime = new Date().getTime();
+        const halfDay = 12 * 60 * 60 * 1000;
 
-      if (cachedData && cachedTimestamp) {
-        const cachedTime = parseInt(cachedTimestamp, 10);
-        if (currentTime - cachedTime < halfDay) {
-          setDataNews(JSON.parse(cachedData));
-          setLoading(false);
-          return;
+        if (cachedData && cachedTimestamp) {
+          const cachedTime = parseInt(cachedTimestamp, 10);
+          if (currentTime - cachedTime < halfDay) {
+            setDataNews(JSON.parse(cachedData));
+            setLoading(false);
+            return;
+          }
         }
-      }
 
-      const res = await fetch("/api/news", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-      localStorage.setItem("newsData", JSON.stringify(data));
-      localStorage.setItem("newsTimestamp", currentTime.toString());
-      setDataNews(data);
-      setLoading(false);
+        const res = await fetch("/api/news", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+        localStorage.setItem("newsData", JSON.stringify(data));
+        localStorage.setItem("newsTimestamp", currentTime.toString());
+        setDataNews(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+        setLoading(false);
+        setError("Error to found news. Please try again later.");
+      }
     };
     fetchData();
   }, []);
@@ -56,6 +63,7 @@ export default function News() {
           ))}
         </div>
       )}
+      {error && <p>{error}</p>}
     </section>
   );
 }
