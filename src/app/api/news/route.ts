@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import puppeteer from "puppeteer";
 import * as cheerio from "cheerio";
 
-let lastFetchTimestamp: number | undefined;
 
 async function fetchData() {
   try {
@@ -25,9 +24,6 @@ async function fetchData() {
 
     await browser.close();
 
-    // Actualiza la marca de tiempo de la última búsqueda
-    // lastFetchTimestamp = Date.now();
-
     return { news };
   } catch (error: any) {
     throw new Error(`An error occurred: ${error.message}`);
@@ -36,22 +32,8 @@ async function fetchData() {
 
 export async function GET(request: Request) {
   try {
-    // Verifica si es necesario obtener datos nuevos
-    if (
-      !lastFetchTimestamp ||
-      Date.now() - lastFetchTimestamp >= 24 * 60 * 60 * 1000
-    ) {
       const { news } = await fetchData();
       return NextResponse.json({ news }, { status: 200 });
-    } else {
-      return NextResponse.json(
-        {
-          message:
-            "Data fetched within the last 24 hours. Returning cached data.",
-        },
-        { status: 200 }
-      );
-    }
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

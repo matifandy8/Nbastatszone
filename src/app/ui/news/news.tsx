@@ -9,12 +9,26 @@ interface NewsData {
   }[];
 }
 export default function News() {
-  const [dataNews, setDataNews] = useState<NewsData>({ news: [] });
+  const [dataNews, setDataNews] = useState({ news: [] });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
+      const cachedData = localStorage.getItem("newsData");
+      const cachedTimestamp = localStorage.getItem("newsTimestamp");
+      const currentTime = new Date().getTime();
+      const halfDay = 12 * 60 * 60 * 1000;
+
+      if (cachedData && cachedTimestamp) {
+        const cachedTime = parseInt(cachedTimestamp, 10);
+        if (currentTime - cachedTime < halfDay) {
+          setDataNews(JSON.parse(cachedData));
+          setLoading(false);
+          return;
+        }
+      }
+
       const res = await fetch("/api/news", {
         method: "GET",
         headers: {
@@ -22,8 +36,10 @@ export default function News() {
         },
       });
       const data = await res.json();
-      setLoading(false);
+      localStorage.setItem("newsData", JSON.stringify(data));
+      localStorage.setItem("newsTimestamp", currentTime.toString());
       setDataNews(data);
+      setLoading(false);
     };
     fetchData();
   }, []);
