@@ -1,11 +1,17 @@
 import { NextResponse } from "next/server";
 import puppeteer from "puppeteer";
 import * as cheerio from "cheerio";
-
+const chromium = require("chrome-aws-lambda");
 
 async function fetchData() {
   try {
-    const browser = await puppeteer.launch();
+    const browser = await chromium.puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
+      headless: chromium.headless,
+      ignoreHTTPSErrors: true,
+    });
     const page = await browser.newPage();
 
     await page.goto("https://www.foxsports.com/nba");
@@ -32,8 +38,8 @@ async function fetchData() {
 
 export async function GET(request: Request) {
   try {
-      const { news } = await fetchData();
-      return NextResponse.json({ news }, { status: 200 });
+    const { news } = await fetchData();
+    return NextResponse.json({ news }, { status: 200 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
