@@ -1,25 +1,17 @@
-/* import { NextResponse } from "next/server";
-import puppeteer from "puppeteer";
+import { NextResponse } from "next/server";
 import * as cheerio from "cheerio";
-import chrome from "chrome-aws-lambda";
+import playwright from "playwright";
 
 async function fetchData() {
   try {
-    const browser = await puppeteer.launch(
-      process.env.NODE_ENV === "production"
-        ? {
-            args: chrome.args,
-            executablePath: await chrome.executablePath,
-            headless: chrome.headless,
-          }
-        : {}
-    );
-    const page = await browser.newPage();
+    const browser = await playwright.chromium.launch({
+      headless: process.env.NODE_ENV === "production" ? true : false,
+    });
 
+    const context = await browser.newContext();
+    const page = await context.newPage();
     await page.goto("https://www.foxsports.com/nba");
-
     const html = await page.content();
-
     const $ = cheerio.load(html);
 
     const news: { title: string; imageUrl: string | undefined }[] = [];
@@ -31,7 +23,6 @@ async function fetchData() {
     });
 
     await browser.close();
-
     return { news };
   } catch (error: any) {
     throw new Error(`An error occurred: ${error.message}`);
@@ -46,4 +37,3 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
- */
