@@ -58,14 +58,17 @@ export default function News() {
         <Loading />
       ) : (
         <div className={styles.newsContainer}>
-          {dataNews.news &&
+          {dataNews.news && dataNews.news.length > 0 ? (
             dataNews.news.map((news, index) => (
               <NewsCard
                 key={index}
                 urlImage={news.imageUrl}
                 title={news.title}
               />
-            ))}
+            ))
+          ) : (
+            <p>No news found.</p>
+          )}
         </div>
       )}
       {error && <p>{error}</p>}
