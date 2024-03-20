@@ -6,7 +6,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 
 export default async function Page({ params }: any) {
   const response = await fetch(
-    `https://nbastatszone-sntx.vercel.app/api/players?fullname=${params.id}`
+    `http://nbastatszone.vercel.app/api/players?fullname=${params.id}`
   );
   const player = await response.json();
 

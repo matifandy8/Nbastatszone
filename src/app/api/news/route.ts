@@ -1,17 +1,19 @@
-import { NextResponse } from "next/server";
+/* import { NextResponse } from "next/server";
 import puppeteer from "puppeteer";
 import * as cheerio from "cheerio";
-const chromium = require("chrome-aws-lambda");
+import chrome from "chrome-aws-lambda";
 
 async function fetchData() {
   try {
-    const browser = await chromium.puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath,
-      headless: chromium.headless,
-      ignoreHTTPSErrors: true,
-    });
+    const browser = await puppeteer.launch(
+      process.env.NODE_ENV === "production"
+        ? {
+            args: chrome.args,
+            executablePath: await chrome.executablePath,
+            headless: chrome.headless,
+          }
+        : {}
+    );
     const page = await browser.newPage();
 
     await page.goto("https://www.foxsports.com/nba");
@@ -44,3 +46,4 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+ */
