@@ -1,20 +1,13 @@
 import { NextResponse } from "next/server";
-import * as cheerio from "cheerio";
-import playwright from "playwright";
+import cheerio from "cheerio";
 
 async function fetchData() {
   try {
-    const browser = await playwright.chromium.launch({
-      headless: process.env.NODE_ENV === "production" ? true : false,
-    });
-
-    const context = await browser.newContext();
-    const page = await context.newPage();
-    await page.goto("https://www.foxsports.com/nba");
-    const html = await page.content();
+    const response = await fetch("https://www.foxsports.com/nba");
+    const html = await response.text();
     const $ = cheerio.load(html);
 
-    const news: { title: string; imageUrl: string | undefined }[] = [];
+    const news: any = [];
 
     $("a.news-article").each((index, element) => {
       const imageUrl = $(element).find("img.image-article").attr("src");
@@ -22,7 +15,6 @@ async function fetchData() {
       news.push({ title, imageUrl });
     });
 
-    await browser.close();
     return { news };
   } catch (error: any) {
     throw new Error(`An error occurred: ${error.message}`);
