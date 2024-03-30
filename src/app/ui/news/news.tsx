@@ -6,6 +6,7 @@ interface NewsData {
   news: {
     imageUrl: string;
     title: string;
+    href: string;
   }[];
 }
 export default function News() {
@@ -43,7 +44,6 @@ export default function News() {
         setDataNews(data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching news:", error);
         setLoading(false);
         setError("Error to found news. Please try again later.");
       }
@@ -64,6 +64,7 @@ export default function News() {
                 key={index}
                 urlImage={news.imageUrl}
                 title={news.title}
+                href={news.href}
               />
             ))
           ) : (

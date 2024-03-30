@@ -12,7 +12,8 @@ async function fetchData() {
     $("a.news-article").each((index, element) => {
       const imageUrl = $(element).find("img.image-article").attr("src");
       const title = $(element).find("h3.article-title").text().trim();
-      news.push({ title, imageUrl });
+      const href = $(element).attr("href");
+      news.push({ title, imageUrl, href });
     });
 
     return { news };

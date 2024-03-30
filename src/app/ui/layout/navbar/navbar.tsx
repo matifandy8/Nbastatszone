@@ -22,7 +22,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className={styles.link}
           >
-            <Image src={github} alt="GitHub" width={20} height={20} />
+            <Image src={github} alt="GitHub icon" width={20} height={20} />
             GitHub
           </a>
         </div>

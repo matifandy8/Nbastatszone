@@ -22,7 +22,6 @@ export default function Home() {
         setPlayers(data);
       })
       .catch((error) => {
-        console.error("Error fetching players:", error);
         setError("Error to found players. Please try again later.");
       });
   }, []);
