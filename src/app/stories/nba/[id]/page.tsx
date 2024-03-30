@@ -14,7 +14,7 @@ function Page({ params }: any) {
   const fetchData = async () => {
     setLoading(true);
     const response = await fetch(
-      `http://localhost:3000/api/post?url=/stories/nba/${params.id}`
+      `https://nbastatszone.vercel.app/api/post?url=/stories/nba/${params.id}`
     );
     const data = await response.json();
     setLoading(false);
