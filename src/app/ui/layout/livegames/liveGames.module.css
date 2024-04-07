@@ -1,0 +1,43 @@
+.livegamescontainer {
+  margin: 0 1rem;
+
+  .date {
+    margin: 10px;
+  }
+
+  .livegames {
+    display: flex;
+    background-image: linear-gradient(
+      170deg,
+      rgb(25 70 147 / 20%),
+      rgb(74 111 171 / 0%) 99%,
+      #0b0a0a3b
+    );
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0px 1px 24px -1px rgba(0, 0, 0, 0.2);
+    .game {
+      border: 1px solid #ffffff2e;
+      padding: 10px;
+      margin: 5px;
+
+      .teams {
+        padding-top: 10px;
+        .teamContainer {
+          display: flex;
+          align-items: center;
+          .team {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .teamName {
+              padding-right: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
