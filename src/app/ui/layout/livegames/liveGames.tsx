@@ -5,6 +5,7 @@ import Image from "next/image";
 export default async function LiveGames() {
   const games = [
     {
+      id: 1,
       time: "2:00",
       image: "/images/logos-nba/logo-heat.svg",
       team: "Heat",
@@ -14,8 +15,8 @@ export default async function LiveGames() {
       scoretwo: "120",
     },
     {
+      id: 2,
       time: "2:00",
-      image: "/images/logos-nba/logo-celtics.svg",
       team: "Celtics",
       score: "120",
       imagetwo: "/images/logos-nba/logo-heat.svg",
@@ -32,8 +33,7 @@ export default async function LiveGames() {
     <section className={styles.livegamescontainer}>
       <p className={styles.date}>{new Date().toLocaleDateString()}</p>
       <div className={styles.livegames}>
-        {games &&
-          games.map((data: any) => <Game key={data.time} data={data} />)}
+        {games && games.map((data: any) => <Game key={data.id} data={data} />)}
       </div>
     </section>
   );
