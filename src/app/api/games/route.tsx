@@ -3,9 +3,7 @@ import cheerio from "cheerio";
 
 async function fetchLiveScores() {
   try {
-    const response = await fetch(
-      "https://www.cbssports.com/nba/scoreboard/20240407/"
-    );
+    const response = await fetch("https://www.cbssports.com/nba/scoreboard");
     const html = await response.text();
     const $ = cheerio.load(html);
 

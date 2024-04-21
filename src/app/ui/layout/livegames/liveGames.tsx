@@ -2,28 +2,18 @@ import Game from "./game";
 import styles from "./liveGames.module.css";
 import Image from "next/image";
 
+async function getData() {
+  const res = await fetch("http://localhost:3000/api/games");
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
 export default async function LiveGames() {
-  const games = [
-    {
-      id: 1,
-      time: "2:00",
-      image: "/images/logos-nba/logo-heat.svg",
-      team: "Heat",
-      score: "110",
-      imagetwo: "/images/logos-nba/logo-celtics.svg",
-      teamtwo: "Celtics",
-      scoretwo: "120",
-    },
-    {
-      id: 2,
-      time: "2:00",
-      team: "Celtics",
-      score: "120",
-      imagetwo: "/images/logos-nba/logo-heat.svg",
-      teamtwo: "Heat",
-      scoretwo: "110",
-    },
-  ];
+  const { games } = await getData();
 
   if (!games || games.length === 0) {
     return <div>Games not found or not games today</div>;
