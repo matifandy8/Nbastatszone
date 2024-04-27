@@ -3,7 +3,7 @@ import styles from "./liveGames.module.css";
 import Image from "next/image";
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/games");
+  const res = await fetch("https://nbastatszone.vercel.app/api/games");
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
