@@ -7,6 +7,7 @@
 
   .livegames {
     display: flex;
+    overflow: overlay;
     background-image: linear-gradient(
       170deg,
       rgb(25 70 147 / 20%),

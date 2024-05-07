@@ -57,6 +57,7 @@
 }
 
 .playerStats {
+  overflow: overlay;
   background-color: rgb(23 24 26 / 30%);
   border-radius: 30px;
   backdrop-filter: blur(5px);
@@ -107,4 +108,13 @@
   cursor: pointer;
   color: #929292;
   transition: color 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .player {
+    flex-direction: column;
+  }
+  .playerPresentation {
+    flex-direction: column;
+  }
 }
